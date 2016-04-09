@@ -1,0 +1,52 @@
+<template name="statistic">
+  <div class="row">
+  	<form class="form-inline">
+	  <div class="form-group col-md-2">
+	    <label for="selectRange">统计范围</label>
+	    <select id="selectRange" class="form-control">
+	      	<option>请选择</option>
+			<option>全省</option>
+			<option>福州</option>
+			<option>龙岩</option>
+			<option>宁德</option>
+			<option>三明</option>
+		</select>
+	  </div>
+	  <div class="form-group col-md-3">
+	    <label for="selectItem">统计项目</label>
+	    <select id="selectItem" class="form-control">
+	      	<option>请选择</option>
+			<option value="sex">性别</option>
+			<option value="degree">最高学位</option>
+			<option value="qualification">最高学历</option>
+			<option value="qualiType">学历类型</option>
+			<option value="personType">人员类别</option>
+			<option value="positionType">岗位类别</option>
+			<option value="dutyLevel">职务级别</option>
+			<option value="proTitle">职称</option>
+			<option value="proTitleLevel">职称等级</option>
+			<option value="teacherType">教师类型</option>
+		</select>
+	  </div>
+	  <div class="col-md-2"><button type="submit" id="btnStatistic" class="btn btn-default">开始统计</button></div>	  
+	</form>	
+  </div>
+  <div class="row">
+  	<div class="container ptl">
+  	{{#if selectTemplate}}
+  		{{>yield "staticTable"}}
+  	{{/if}}
+  
+  	</div>
+  	
+  </div>
+</template>
+
+
+
+
+
+
+
+
+

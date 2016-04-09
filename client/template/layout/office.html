@@ -1,0 +1,111 @@
+<template name="office">
+
+		<ul class="nav nav-tabs" style="margin-bottom:20px">
+			<li role="presentation" class="active"><a href="#">单位信息</a></li>
+			<li role="presentation"><a href="{{pathFor 'stuffInfo'}}">人员信息</a></li>
+		</ul>
+
+	  	<!-- office page -->
+    	<div class="container" >
+    		<form class="form-horizontal" id="officeForm">
+			  <div class="form-group">
+			    <label for="officeType" class="col-sm-3 control-label">单位类型</label>
+			    <div class="col-sm-2">
+			      <select id="officeType" class="form-control">
+			      	<option>请选择</option>
+					<option>分校</option>
+					<option>学院</option>
+					<option>工作站</option>
+				  </select>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="name" class="col-sm-3 control-label">单位名称</label>
+			    <div class="col-sm-4">
+			      <input type="text" class="form-control" id="name" placeholder="请填单位名称" required>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			  	<label for="othername" class="col-sm-3 control-label">是否有其他牌子</label>
+			  	<div class="col-sm-2">
+			  		<label class="checkbox-inline">
+					  <input type="radio" name="isExist" id="isExist" value="true"> 是
+					</label>
+					<label class="checkbox-inline">
+					  <input type="radio" name="isExist" id="notExist" value="false"> 否
+					</label>
+			  	</div>
+			  	<div id="otherNameInput" class="col-sm-4 {{ShowText}}">
+				      <input type="text" class="form-control" id="othername" placeholder="请填写其他名称">
+				</div>
+				
+			  </div>
+			  <div class="form-group">
+			  	<label for="isIndepOffice" class="col-sm-3 control-label">是否有独立办公场地</label>
+			  	<div class="col-sm-2">
+			  		<label class="checkbox-inline">
+					  <input type="radio" name="isIndepOffice" id="isIndepOffice" value="true"> 是
+					</label>
+					<label class="checkbox-inline">
+					  <input type="radio" name="isIndepOffice" id="notIndepOffice" value="false"> 否
+					</label>
+			  	</div>
+			  	<div id="IndepOfficeDiv" class="col-sm-4 {{ShowArea}}">
+				      <input type="text" class="form-control" id="IndepOfficeInput" placeholder="请填写办公面积">
+				</div>
+				
+			  </div>
+			   <div class="form-group">
+			    <label for="officeSpec" class="col-sm-3 control-label">机构规格</label>
+			    <div class="col-sm-2">
+			      <select id="officeSpec" class="form-control">
+			      	<option>请选择</option>
+					<option>正厅级</option>
+					<option>正处级</option>
+					<option>正科级</option>
+					<option>副科级</option>
+					<option>股级及以下</option>
+				  </select>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			  	<label for="name" class="col-sm-3 control-label">是否为独立事业法人</label>
+			  	<div class="col-sm-4">
+			  		<label class="checkbox-inline">
+					  <input type="radio" name="isIndep"  value="true"> 是
+					</label>
+					<label class="checkbox-inline">
+					  <input type="radio" name="isIndep"  value="false"> 否
+					</label>
+			  	</div>
+			  </div>
+			  <div class="form-group">
+			    <label for="staffCount" class="col-sm-3 control-label">编制数</label>
+			    <div class="col-sm-4">
+			      <input type="number" class="form-control valiNumHeight" id="staffCount" placeholder="请填编制数" required>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="division" class="col-sm-3 control-label">内设部门</label>
+			    <div class="col-sm-2">
+			    	<input type="number" class="form-control valiNumHeight" id="divisionCount" placeholder="请填部门个数" required>
+			    </div>	
+			  </div>
+			  {{#each divis}}
+			  <div class="form-group">
+			  	<div name="diviDiv" class="col-sm-4 col-sm-offset-3">
+				      <input type="text" class="form-control" id="IndepOfficeInput{{lowerNum}}" placeholder="请填写第{{upperNum}}个部门名称">
+				</div>
+			  </div>
+			  {{/each}}
+
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-primary pull-right">提交单位信息</button>
+			    </div>
+			  </div>
+			</form>
+    	</div>
+
+
+</template>

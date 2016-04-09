@@ -1,0 +1,33 @@
+<template name="personType">
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+			  	<td>最高学历</td>
+			  	<td>人数</td>
+			  	<td>比例</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			  	<td>本校在编人员</td>
+			  	<td>{{item1}}</td>
+			  	<td>{{itemRate1}}</td>
+			</tr>
+			<tr>
+			  	<td>外单位借用人员</td>
+			  	<td>{{item2}}</td>
+			  	<td>{{itemRate2}}</td>
+			</tr>
+			<tr>
+			  	<td>编外人员</td>
+			  	<td>{{item3}}</td>
+			  	<td>{{itemRate3}}</td>
+			</tr>
+			<tr>
+			  	<td>总计</td>
+			  	<td>{{total}}</td>
+			  	<td>{{totalRate}}</td>
+			</tr>
+		</tbody>  
+	</table>
+</template>

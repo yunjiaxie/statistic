@@ -1,0 +1,251 @@
+<template name="stuffInfo">
+	<ul class="nav nav-tabs" style="margin-bottom:20px">
+		<li role="presentation" ><a href="{{pathFor 'office'}}">单位信息</a></li>
+		<li role="presentation" class="active"><a href="#">人员信息</a></li>
+	</ul>
+	<div class='container'>
+	  <form id='stuffForm'>
+		<div class="alert alert-danger" role="alert">请先确认您已填写了单位信息并提交，才能填写此页面。</div>
+		<div class="row">
+			<!-- left-->
+			<div class="col-md-6" >
+				<form class="form-horizontal" >
+					<div class="form-group">
+						<label for="stuffName" class="col-sm-3 control-label">人员名称</label>
+					    <div class="col-sm-4">
+					      <input type="text" class="form-control" id="stuffName" placeholder="请填人员名称" required>
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="sex" class="col-sm-3 control-label">性别</label>
+					  	<div class="col-sm-6">
+					  		<label class="checkbox-inline">
+							  <input type="radio" name="sex" id="male" value="男"> 男
+							</label>
+							<label class="checkbox-inline">
+							  <input type="radio" name="sex" id="female" value="女">女
+							</label>
+					  	</div>
+					</div>
+					<div class="form-group">
+						<label for="birthDatepicker" class="col-sm-3 control-label">出生年月</label>
+					    <div class="col-sm-4">
+					      <input type="text" class="form-control" id="birthDatepicker" required placeholder="请选择出生年月">
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="degree" class="col-sm-3 control-label">最高学位</label>
+					    <div class="col-sm-5">
+					      <select id="degree" class="form-control">
+					      	<option>请选择</option>
+							<option>无</option>
+							<option>学士</option>
+							<option>硕士</option>
+							<option>博士</option>
+							<option>双学士</option>
+						  </select>
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="qualification" class="col-sm-3 control-label">最高学历</label>
+					    <div class="col-sm-5">
+					      <select id="qualification" class="form-control">
+					      	<option>请选择</option>
+							<option>博士研究生</option>
+							<option>硕士研究生</option>
+							<option>本科</option>
+							<option>双本科</option>
+							<option>大专</option>
+							<option>中专、技校或职高</option>
+							<option>高中及以下</option>
+						  </select>
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="qualiType" class="col-sm-3 control-label">学历类型</label>
+					    <div class="col-sm-5">
+					      <select id="qualiType" class="form-control">
+					      	<option>请选择</option>
+							<option>普通全日制教育</option>
+							<option>党校教育</option>
+							<option>成人教育</option>
+						  </select>
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="school" class="col-sm-3 control-label">毕业院校</label>
+						<div class="col-sm-6 {{defaultDiv}}">
+					      <input type="text" class="form-control"  placeholder="请先选择最高学历才能填此项" disabled>
+					    </div>
+					    {{#each schools}}
+					    <div class="col-sm-3">
+					      <input type="text" class="form-control" id="school{{number}}" placeholder="请填第{{number}}个" required>
+					    </div>
+						{{/each}}
+					</div>
+					<div class="form-group">
+						<label for="major" class="col-sm-3 control-label">专业</label>
+						<div class="col-sm-6">
+					      <input type="text" class="form-control" id="major" placeholder="请填写专业" >
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="personType" class="col-sm-3 control-label">人员类别</label>
+					    <div class="col-sm-5">
+					      <select id="personType" class="form-control">
+					      	<option>请选择</option>
+							<option>本校在编人员</option>
+							<option>外单位借用人员</option>
+							<option>编外人员</option>
+						  </select>
+					    </div>
+					</div>
+					
+				</form>
+			</div><!-- end left -->
+			<!-- right -->
+			<div class="col-md-6" >
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label for="positionType" class="col-sm-3 control-label">岗位类别</label>
+					    <div class="col-sm-5">
+					      <select id="positionType" class="form-control">
+					      	<option>请选择</option>
+							<option>管理人员</option>
+							<option>教学人员</option>
+							<option>双肩挑人员</option>
+							<option>工勤人员</option>
+						  </select>
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="whichDivi" class="col-sm-3 control-label">所在部门</label>
+					    <div class="col-sm-5">
+					      <select id="whichDivi" class="form-control">
+					      	<option>请选择</option>
+					      	{{#each divisions}}
+							<option>{{this}}</option>
+							{{/each}}
+						  </select>
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="duty" class="col-sm-3 control-label">职务</label>
+					    <div class="col-sm-6">
+					      <input type="text" class="form-control" id="duty" placeholder="请填职务" required>
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="dutyLevel" class="col-sm-3 control-label">职务级别</label>
+					    <div class="col-sm-5">
+					      <select id="dutyLevel" class="form-control">
+					      	<option>请选择</option>
+					      	<option>三级职员</option>
+					      	<option>四级职员</option>
+					      	<option>五级职员</option>
+					      	<option>六级职员</option>
+					      	<option>七级职员</option>
+					      	<option>八级职员</option>
+					      	<option>九级职员</option>
+					      	<option>十级职员</option>			      	
+						  </select>
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="proTitle" class="col-sm-3 control-label">职称</label>
+					    <div class="col-sm-5">
+					      <select id="proTitle" class="form-control">
+					      	<option>请选择</option>
+					      	<option>教授</option>
+					      	<option>副教授</option>
+					      	<option>讲师</option>
+					      	<option>助教</option>
+					      	<option>研究员</option>
+					      	<option>副研究员</option>
+					      	<option>助理研究员</option>
+					      	<option>研究实习员</option>	
+					      	<option>中专高讲</option>
+					      	<option>中专讲师</option>
+					      	<option>中专助讲</option>	
+					      	<option>中学高级教师</option>
+					      	<option>中学一级教师</option>	
+					      	<option>中学二级教师</option>
+					      	<option>小学高级教师</option>	
+					      	<option>小学一级教师</option>
+					      	<option>小学二级教师</option>
+					      	<option>高级实验师</option>	
+					      	<option>实验师</option>
+					      	<option>助理实验师</option>
+					      	<option>高级会计师</option>
+					      	<option>会计师</option>
+					      	<option>助理会计师</option>
+					      	<option>高级工程师</option>
+					      	<option>工程师</option>
+					      	<option>助理工程师</option>	
+					      	<option>其他系列正高</option>
+					      	<option>其他系列副高</option>	
+					      	<option>其他系列中级</option>
+					      	<option>其他系列初级</option>	
+					      	<option>其他系列员级</option>	      	
+						  </select>
+					    </div>
+					</div>
+					<div class="form-group">
+						<label for="proTitleLevel" class="col-sm-3 control-label">职称等级</label>
+					    <div class="col-sm-5">
+					      <select id="proTitleLevel" class="form-control">
+					      	<option>请选择</option>
+					      	<option>专技二级</option>
+					      	<option>专技三级</option>
+					      	<option>专技四级</option>
+					      	<option>专技五级</option>
+					      	<option>专技六级</option>
+					      	<option>专技七级</option>
+					      	<option>专技八级</option>
+					      	<option>专技九级</option>	
+					      	<option>专技十级</option>
+					      	<option>专技十一级</option>
+					      	<option>专技十二级</option>
+					      	<option>专技十三级</option>			      	
+						  </select>
+					    </div>
+					</div>
+					<div class="form-group">
+					  	<label for="isTeacher" class="col-sm-3 control-label">是否是教师</label>
+					  	<div class="col-sm-4">
+					  		<label class="checkbox-inline">
+							  <input type="radio" name="isTeacher" id="isTeacher" value="true"> 是
+							</label>
+							<label class="checkbox-inline">
+							  <input type="radio" name="isTeacher" id="notTeacher" value="false"> 否
+							</label>
+					  	</div>
+					</div>
+					<div class="form-group">
+					  	<div class="col-sm-3 col-sm-offset-3 {{teacherDiv}}">
+						     <select id="teacherOption" class="form-control">
+						      	<option>请选择</option>
+						      	<option>专职教师</option>
+						      	<option>双肩挑教师</option>
+						      </select>
+						</div>
+						<div class="col-sm-5 {{teacherDiv}}">
+						     <input type="text" class="form-control" id="teacherInput" placeholder="请填写任教学科">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="workDatepicker" class="col-sm-3 control-label">进入电大时间</label>
+					    <div class="col-sm-6">
+					      <input type="text" class="form-control" id="workDatepicker" required placeholder="请选择进入电大时间">
+					    </div>
+					</div>
+				</form>
+			</div><!-- right page -->
+		    
+		  </div>
+		  <div class="col-sm-offset-2">
+		      <button type="submit" class="btn btn-primary pull-right">提交人员信息</button>
+		  </div>
+	  </form>
+	</div>
+</template>
